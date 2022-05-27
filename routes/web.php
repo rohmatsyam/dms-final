@@ -36,21 +36,14 @@ Route::group(['middleware' => 'auth'],function(){
 
 require __DIR__.'/auth.php';
 
-
-// Route::get('/admin/dashboard', function () {
-//     return view('admin.dashboard');
-// })->middleware(['auth:admin'])->name('admin.dashboard');
-
-Route::group(['middleware' => 'auth:admin'],function(){
-    // Route::get('/admin/dashboard', function () {
-    //     return view('admin.dashboard');
-    // })->name('admin.dashboard');
+Route::group(['middleware' => 'auth:admin'],function(){    
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', function () {            
                 return view('admin.dashboard');
         })->name('admin.dashboard');
 
         Route::resource('/users',\App\Http\Controllers\UserController::class);
+        Route::resource('/admins',\App\Http\Controllers\AdminController::class);
     });
 });
 

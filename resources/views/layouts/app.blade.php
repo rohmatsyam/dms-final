@@ -22,7 +22,7 @@
     @include('layouts.navigation')
 
     <!-- Page Heading -->
-    <header class="d-flex py-3 bg-white shadow-sm border-bottom">
+    <header class="d-flex py-2 bg-white shadow-sm border-bottom">
         <div class="container">
             {{ $header }}
         </div>

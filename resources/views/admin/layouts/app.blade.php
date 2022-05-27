@@ -23,7 +23,7 @@
     @include('admin.layouts.navigation')
 
     <!-- Page Heading -->
-    <header class="py-3 bg-white shadow-sm d-flex border-bottom">
+    <header class="py-2 bg-white shadow-sm d-flex border-bottom">
         <div class="container">
             {{ $header }}
         </div>
