@@ -27,9 +27,7 @@
                 <div class="mb-3">
                     <x-label for="password" :value="__('Password')" />
 
-                    <x-input id="password" type="password"
-                             name="password"
-                             required autocomplete="current-password" />
+                    <x-input id="password" type="password" name="password" required autocomplete="current-password" />
                 </div>
 
                 <!-- Remember Me -->
@@ -57,6 +55,9 @@
                     </div>
                 </div>
             </form>
+            <div>
+                <a href="{{ route('admin.login') }}">only admin</a>
+            </div>
         </div>
     </x-auth-card>
 </x-guest-layout>
