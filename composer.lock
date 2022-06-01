@@ -4,8 +4,56 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a62d322a24c85429b6c14e2d8628696b",
+    "content-hash": "0f37d5f9d7c3fbeb5a4d22eadac1adfa",
     "packages": [
+        {
+            "name": "appolous/lazada-php-sdk",
+            "version": "1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/appolous/lazada-php-sdk.git",
+                "reference": "0972ed84e610e8add8f03c31524cd81c5e85662e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/appolous/lazada-php-sdk/zipball/0972ed84e610e8add8f03c31524cd81c5e85662e",
+                "reference": "0972ed84e610e8add8f03c31524cd81c5e85662e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^8.0|^9.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lazada\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Appolous Team",
+                    "email": "hello@appolous.com",
+                    "homepage": "https://www.appolous.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Lazada PHP SDK for Laravel",
+            "homepage": "https://github.com/appolous/lazada-php-sdk",
+            "keywords": [
+                "Lazada",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/appolous/lazada-php-sdk/issues",
+                "source": "https://github.com/appolous/lazada-php-sdk/tree/1.3"
+            },
+            "time": "2022-02-10T13:27:55+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.9.3",

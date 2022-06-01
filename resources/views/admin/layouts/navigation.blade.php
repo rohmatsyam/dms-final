@@ -2,7 +2,8 @@
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand" href="/">
-            <x-application-logo width="36" />
+            {{-- <x-application-logo width="36" /> --}}
+            <img src="{{ asset('img/logodms.png') }}" style="width: 60px;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -38,7 +39,7 @@
                                 @csrf
 
                                 <x-dropdown-link :href="route('admin.logout')" onclick="event.preventDefault();
-                                                                           this.closest('form').submit();">
+                                                                               this.closest('form').submit();">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
