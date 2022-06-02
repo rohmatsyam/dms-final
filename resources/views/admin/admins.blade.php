@@ -13,7 +13,6 @@
 
             <form method="POST" action="{{ route('admins.store') }}">
                 @csrf
-
                 <div class="container">
                     <div class="row">
                         <div class="col-6">

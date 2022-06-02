@@ -7,12 +7,19 @@
 
     <div class="card my-4">
         <div class="card-body">
-            <form method="POST" action="{{ route('lazop') }}">
-                @csrf
-                <x-button>
-                    {{ __('Integrasi Lazada') }}
-                </x-button>
-            </form>
+
+            @if (isset($access_token))
+                {{ $access_token }}
+                <br>
+                {{ $message }}
+            @else
+                <form method="POST" action="{{ route('lazada') }}">
+                    @csrf
+                    <x-button>
+                        {{ __('Integrasi Lazada') }}
+                    </x-button>
+                </form>
+            @endif
         </div>
     </div>
 </x-app-layout>

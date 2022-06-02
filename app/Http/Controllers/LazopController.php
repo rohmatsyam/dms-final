@@ -6,11 +6,14 @@ use App\Models\SellerLazada;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
+
 use Lazada\LazopClient;
 use Lazada\LazopRequest;
 
 class LazopController extends Controller
-{
+{    
     private $lazadaUrl = "https://api.lazada.com.my/rest";
     public function convertDate($date){
         $dateString = str_replace('-','/',$date);
@@ -24,12 +27,8 @@ class LazopController extends Controller
             $token_expires_at = $this->convertDate($seller->token_expires_at);
             $refresh_expires_at = $this->convertDate($seller->refresh_expires_at);
             $now = Carbon::now()->format('Y/m/d');            
-            if($now < $token_expires_at){
-                return response()->json([                        
-                    'status' => true,
-                    'message' => "Access token is available, valid until ".Carbon::parse($token_expires_at)->diffForHumans(),
-                    'data' => $seller->access_token
-                ],200);                
+            if($now < $token_expires_at){                
+                return view('lazada',['access_token' => $seller->access_token,'message'=>"Access token is available, valid until ".Carbon::parse($token_expires_at)->diffForHumans()]);
             }else{
                 if($now < $refresh_expires_at){
                     // refresh access token
@@ -45,12 +44,8 @@ class LazopController extends Controller
                         'access_token' => $access_token,
                         'token_expires_at' => $token_expires_at,
                         'refresh_token' => $refresh_token,                
-                    ]);            
-                    return response()->json([                        
-                        'status' => true,
-                        'message' => "Success update access token, valid until ".Carbon::parse($token_expires_at)->diffForHumans(),
-                        'data' => $access_token
-                    ],200);                  
+                    ]);                                
+                    return view('lazada',['access_token' => $access_token,'message'=>"Success update access token, valid until ".Carbon::parse($token_expires_at)->diffForHumans()]);
                 }else{
                     return redirect()->away("https://auth.lazada.com/oauth/authorize?response_type=code&force_auth=true&redirect_uri=".env('LAZADA_REDIRECT_URI')."&client_id=".env('LAZADA_KEY')."&redirect_auth=true");                    
                 }
@@ -71,26 +66,18 @@ class LazopController extends Controller
 
         // save token
         $hasil = json_decode($response);        
-        $seller_id = $hasil->country_user_info[0]->seller_id;
-        $user_id = auth()->user()->id;
-        $country = $hasil->country_user_info[0]->country;
-        $access_token = $hasil->access_token;
-        $token_expires_at = Carbon::now()->addDays(7)->format('Y-m-d');
-        $refresh_token = $hasil->refresh_token;
-        $refresh_expires_at = Carbon::now()->addDays(30)->format('Y-m-d');
         $seller = SellerLazada::create([                
-            'seller_id' => $seller_id,
-            'user_id' => $user_id,
-            'country' => $country,
-            'access_token' => $access_token,
-            'token_expires_at' => $token_expires_at,
-            'refresh_token' => $refresh_token,
-            'refresh_expires_at' => $refresh_expires_at,
-        ], 200);        
-        return response()->json([                        
-            'status' => true,
-            'message' => "Success stored access token",
-            'data' => $seller
-        ],200);
+            'seller_id' => $hasil->country_user_info[0]->seller_id,
+            'user_id' => auth()->user()->id,
+            'country' => $hasil->country_user_info[0]->country,
+            'access_token' => $hasil->access_token,
+            'token_expires_at' => Carbon::now()->addDays(7)->format('Y-m-d'),
+            'refresh_token' => $hasil->refresh_token,
+            'refresh_expires_at' => Carbon::now()->addDays(30)->format('Y-m-d'),
+        ], 200);
+        return view('lazada',['access_token' => $hasil->access_token,'message'=>"Success stored access token"]);        
+    }
+    public function show_view(){
+        return view('lazada');
     }
 }

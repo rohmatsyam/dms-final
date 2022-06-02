@@ -30,14 +30,11 @@ Route::group(['middleware' => 'auth'],function(){
 
     Route::view('profile','profile')->name('profile');
     Route::put('profile',[\App\Http\Controllers\ProfileController::class,'update'])->name('profile.update');
-
-    Route::get('/lazada',function () {
-        return view('lazada');
-    })->name('lazada');
-    Route::post('/lazopauth', [\App\Http\Controllers\LazopController::class, 'lazadaAuth'])->name('lazop');
-
-    // callback
-    Route::get('/callback', [\App\Http\Controllers\LazopController::class, 'callbackAuth']);
+    
+    Route::get('/lazada', [\App\Http\Controllers\LazopController::class, 'show_view'])->name('lazada');
+    Route::post('/lazada', [\App\Http\Controllers\LazopController::class, 'lazadaAuth'])->name('lazada');
+    // callback    
+    Route::get('/callback', [\App\Http\Controllers\LazopController::class, 'callbackAuth']);    
 });
 
 require __DIR__.'/auth.php';
