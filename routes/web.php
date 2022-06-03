@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\isLazada;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,17 +25,21 @@ Route::get('/', function () {
 // USER
 
 Route::group(['middleware' => 'auth'],function(){
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
 
     Route::view('profile','profile')->name('profile');
     Route::put('profile',[\App\Http\Controllers\ProfileController::class,'update'])->name('profile.update');
     
-    Route::get('/lazada', [\App\Http\Controllers\LazopController::class, 'show_view'])->name('lazada');
-    Route::post('/lazada', [\App\Http\Controllers\LazopController::class, 'lazadaAuth'])->name('lazada');
     // callback    
-    Route::get('/callback', [\App\Http\Controllers\LazopController::class, 'callbackAuth']);    
+    Route::get('/callback', [\App\Http\Controllers\LazopController::class, 'callbackAuth']);
+    
+    // CRUD Produk    
+    Route::group(['prefix' => 'lazada', 'middleware' => ['isLazada']], function(){
+        Route::get('/home',function(){return view('lazada');})->name('lazadahome');
+        Route::get('/getcategory', [\App\Http\Controllers\CrudProduct::class, 'GetCategory'])->name('getcategory');
+        Route::get('/getcategoryattributes', [\App\Http\Controllers\CrudProduct::class, 'GetCategoryAttributes'])->name('getcategoryattributes');
+        Route::post('/createproduct', [\App\Http\Controllers\CrudProduct::class, 'CreateProduct'])->name('createproduct');
+    });
 });
 
 require __DIR__.'/auth.php';
