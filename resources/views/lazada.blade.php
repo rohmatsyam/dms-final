@@ -9,18 +9,8 @@
         <div class="card-body">
             <?php var_dump($access_token); ?>
             <?php var_dump($message); ?>
-            <form method="GET" action="{{ route('getcategoryattributes') }}">
-                @csrf
-                <x-label for="categoryattr" :value="__('Masukkan kateori')" />
-                <x-input id="categoryattr" type="number" name="categoryattr" required autofocus />
-                <x-button>
-                    {{ __('Get Category Attributes') }}
-                </x-button>
-            </form>
-            <br>
             <form method="POST" action="{{ route('createproduct') }}">
                 @csrf
-
                 <x-input name="accessToken" type="hidden" value="{{ $access_token }}" />
                 <x-button>
                     {{ __('Store Product') }}

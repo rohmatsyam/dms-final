@@ -11,7 +11,7 @@ class CategorySelect extends Component
     public $selectedCategory = null;        
     public $selectedSubCategory = null;
     public $selectedSubSubCategory = null;
-    
+        
     public function render()
     {           
         $json = Storage::disk('public')->get('category.json');
