@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
 use Lazada\LazopClient;
 use Lazada\LazopRequest;
 
@@ -59,16 +61,16 @@ class isLazada
             }           
         }else{
             return redirect()->away("https://auth.lazada.com/oauth/authorize?response_type=code&force_auth=true&redirect_uri=".env('LAZADA_REDIRECT_URI')."&client_id=".env('LAZADA_KEY')."&redirect_auth=true");
-        }
-
-        if($request->path() == "lazada/home"){
+        }        
+        if(Storage::disk('public')->exists('category.json')){
+            return $next($request);
+        }else{
             $c = new LazopClient($this->categoryUrl,env('LAZADA_KEY'),env('LAZADA_SECRET'));
             $req = new LazopRequest('/category/tree/get','GET');
             $req->addApiParam('language_code','id_ID');
-            $data = $c->execute($req);
-            $category = json_decode($data);            
-            view()->share('category',$category->data);
-            return $next($request);            
+            $hasil = $c->execute($req);
+            $category = json_decode($hasil);
+            Storage::disk('public')->put('category.json', json_encode($category->data));    
         }
         return $next($request);
     }

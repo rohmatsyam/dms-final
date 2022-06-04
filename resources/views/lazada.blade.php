@@ -27,24 +27,43 @@
                 </x-button>
             </form>
 
+            {{-- <div class="container">
+                <div class="btn-group flex-wrap" role="group" aria-label="Basic outlined example">
+                    @foreach ($category as $satu => $item)
+                        <div class="btn-group" role="group">
+                            <button id="btnGroupDrop{{ $satu }}" type="button"
+                                class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                {{ $item->name }}
+                            </button>
+                            @if (isset($item->children))
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop{{ $satu }}">
+                                    @foreach ($item->children as $dua => $child)
+                                        @if (isset($child->name))
+                                            <li><a class="dropdown-item" href="#">
+                                                    {{ $child->name }} </a>
 
-
-            @foreach ($category as $key => $cat)
-                {{-- {{ var_dump($cat) }} --}}
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ $cat->name }}
-                    </button>
-                    {{-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        @foreach ($cat->$children as $i => $item)
-                            <a class="dropdown-item" href="#">Action</a>                            
-                        @endforeach
-                    </div> --}}
-                </div>                
-                {{-- {{ dd(is_array($cat->children)) }} --}}
-            @endforeach
-
-        </div>
-    </div>
+                                                @if (isset($child->children))
+                                                    <ul class="submenu dropdown-menu">
+                                                        @foreach ($child->children as $tiga => $anak)
+                                                            @if (isset($anak->name))
+                                                                <li><a class="dropdown-item"
+                                                                        href="#">{{ $anak->name }}</a>
+                                                                </li>
+                                                            @endif
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+            </div> --}}
+            <div class="container">
+                @livewire('category-select')
+            </div>
 </x-app-layout>
