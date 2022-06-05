@@ -3,26 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Lazada\LazopClient;
 use Lazada\LazopRequest;
 
 class CrudProduct extends Controller
-{
-    // protected $url = "https://api.lazada.co.id/rest";
-    protected $url = "https://api.lazada.co.id/rest";
-    public function GetCategory(){
-        $c = new LazopClient($this->url,env('LAZADA_KEY'),env('LAZADA_SECRET'));
-        $request = new LazopRequest('/category/tree/get','GET');
-        $request->addApiParam('language_code','id_ID');
-        $data = $c->execute($request);
-    }
+{    
+    protected $url = "https://api.lazada.co.id/rest";    
 
     public function GetCategoryAttributes(Request $r){        
         $c = new LazopClient($this->url,env('LAZADA_KEY'),env('LAZADA_SECRET'));
         $request = new LazopRequest('/category/attributes/get','GET');
         $request->addApiParam('primary_category_id',$r->categoryattr);
         $request->addApiParam('language_code','id_ID');
-        var_dump($c->execute($request));
+        $hasil = $c->execute($request);
+        $dataEncode = json_decode($hasil);
+        Storage::disk('public')->put('attributes.json', json_encode($dataEncode->data));        
+        return view('createproduct');        
     }
 
     public function CreateProduct(Request $r){        
