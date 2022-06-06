@@ -20,8 +20,9 @@ class CrudProduct extends Controller
         $dataEncode = json_decode($hasil);
         Storage::disk('public')->put('attributes.json', json_encode($dataEncode->data));
 
-        $productName = $r->productName;        
-        view()->share('productName',$productName);        
+        $productName = $r->productName;       
+        $categoryId = $r->categoryId; 
+        view()->share(['productName'=>$productName,'categoryId'=>$categoryId]);        
         return view('createproduct');        
     }
 

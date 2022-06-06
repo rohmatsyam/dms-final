@@ -79,9 +79,10 @@
                 </div>
             </div>
 
-            <form method="POST" action="{{ route('getcategoryattributes') }}">
+            <form method="GET" action="{{ route('getcategoryattributes') }}">
                 @csrf
                 <x-input name="productName" type="hidden" value="{{ $product_name }}" />
+                <x-input name="categoryId" type="hidden" value="{{ $category_id }}" />
 
                 <div class="row mt-2 justify-content-center items-center">
                     <div class="col-sm-6 text-center">

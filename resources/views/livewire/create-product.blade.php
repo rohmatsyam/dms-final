@@ -70,6 +70,7 @@ $mandatorySplits = array_chunk($mandatory, 2);
             <div class="row mt-2 justify-content-center items-center">
                 <div class="col-sm-6 text-center">
                     <input name="accessToken" type="hidden" value="{{ $access_token }}">
+                    <input name="categoryId" type="hidden" value="{{ $categoryId }}">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
