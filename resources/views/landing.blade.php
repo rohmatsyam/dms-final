@@ -24,10 +24,10 @@
 
             <ul class="mb-2 nav col-12 col-md-auto justify-content-center mb-md-0">
                 <li><a href="#" class="px-2 nav-link link-secondary">Home</a></li>
-                <li><a href="#" class="px-2 nav-link link-dark">Features</a></li>
+                <li><a href="#fitur" class="px-2 nav-link link-dark">Features</a></li>
                 <li><a href="#" class="px-2 nav-link link-dark">Pricing</a></li>
                 <li><a href="#" class="px-2 nav-link link-dark">FAQs</a></li>
-                <li><a href="#" class="px-2 nav-link link-dark">About</a></li>
+                <li><a href="#about" class="px-2 nav-link link-dark">About</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
@@ -60,8 +60,8 @@
                         marketplace,
                         aplikasi kasir, jasa pengiriman, hingga pencatatan akuntansi.</p>
                     <div class="gap-2 d-grid d-md-flex justify-content-md-start">
-                        {{-- <a type="button" class="btn btn-primary" href="/api/register">Register</a> --}}
-                        <a type="button" class="px-4 btn btn-primary btn-lg me-md-2" href="/api/register">Register</a>
+                        {{-- <a type="button" class="btn btn-primary" href="{{ route('register') }}">Register</a> --}}
+                        <a type="button" class="px-4 btn btn-primary btn-lg me-md-2" href="{{ route('register') }}">Register</a>
                     </div>
                 </div>
             </div>
@@ -103,53 +103,55 @@
             <br><br>
 
             {{-- Fitur --}}
-            <div class="container text-capitalize">
-                <h4 style="text-align: center; text-transform: uppercase; font-weight: bolder;">Fitur DMS Omni-Channel</h4>
+            <div id="fitur">
+                <div class="container text-capitalize">
+                    <h4 style="text-align: center; text-transform: uppercase; font-weight: bolder;">Fitur DMS Omni-Channel</h4>
 
-                <div class="row">
-                    <div class="col-md-3 themed-grid-col">
-                        <ul class="main-menu">
-                            <a class="btn" href="#katalog" style="background-color: #f1f1f1; display: block; font-weight: bolder;">Katalog</a><br>
-                            <a class="btn" href="#pesanan" style="background-color: #f1f1f1; display: block; font-weight: bolder;">Pesanan</a><br>
-                            <a class="btn" href="#persediaan" style="background-color: #f1f1f1; display: block; font-weight: bolder;">Persediaan</a><br>
-                            <a class="btn" href="#gudang" style="background-color: #f1f1f1; display: block; font-weight: bolder;">Managemen Gudang</a><br>
-                            <a class="btn" href="#akuntansi" style="background-color: #f1f1f1; display: block; font-weight: bolder;">Akuntansi</a><br>
-                        </ul>
-                    </div>
-                    <div class="col-md-8 themed-grid-col">
-                        <div id="katalog">
-                            <div class="card card-body" style="color: black;">
-                                <img class="mx-auto" src="{{ asset('img/katalog.png') }}" style="height: 400px;  width: 660px;">
-                            </div>
-                        </div><br>
-                        <div id="pesanan">
-                            <div class="card card-body" style="color: black;">
-                                <img class="mx-auto" src="{{ asset('img/pesanan.png') }}" style="height: 400px;  width: 660px;">
-                            </div>
-                        </div><br>
-                        <div id="persediaan">
-                            <div class="card card-body" style="color: black;">
-                                <img class="mx-auto" src="{{ asset('img/persediaan.png') }}" style="height: 400px;  width: 660px;">
-                            </div>
-                        </div><br>
-                        <div id="gudang">
-                            <div class="card card-body" style="color: black;">
-                                <img class="mx-auto" src="{{ asset('img/gudang.png') }}" style="height: 400px;  width: 660px;">
-                            </div>
-                        </div><br>
-                        <div id="akuntansi">
-                            <div class="card card-body" style="color: black;">
-                                <img class="mx-auto" src="{{ asset('img/akuntansi.png') }}" style="height: 400px;  width: 660px;">
-                            </div>
-                        </div><br>
-                    </div>
+                    <div class="row">
+                        <div class="col-md-3 themed-grid-col">
+                            <ul class="main-menu">
+                                <a class="btn" href="#katalog" style="background-color: #f1f1f1; display: block; font-weight: bolder;">Katalog</a><br>
+                                <a class="btn" href="#pesanan" style="background-color: #f1f1f1; display: block; font-weight: bolder;">Pesanan</a><br>
+                                <a class="btn" href="#persediaan" style="background-color: #f1f1f1; display: block; font-weight: bolder;">Persediaan</a><br>
+                                <a class="btn" href="#gudang" style="background-color: #f1f1f1; display: block; font-weight: bolder;">Managemen Gudang</a><br>
+                                <a class="btn" href="#akuntansi" style="background-color: #f1f1f1; display: block; font-weight: bolder;">Akuntansi</a><br>
+                            </ul>
+                        </div>
+                        <div class="col-md-8 themed-grid-col">
+                            <div id="katalog">
+                                <div class="card card-body" style="color: black;">
+                                    <img class="mx-auto" src="{{ asset('img/katalog.png') }}" style="height: 400px;  width: 660px;">
+                                </div>
+                            </div><br>
+                            <div id="pesanan">
+                                <div class="card card-body" style="color: black;">
+                                    <img class="mx-auto" src="{{ asset('img/pesanan.png') }}" style="height: 400px;  width: 660px;">
+                                </div>
+                            </div><br>
+                            <div id="persediaan">
+                                <div class="card card-body" style="color: black;">
+                                    <img class="mx-auto" src="{{ asset('img/persediaan.png') }}" style="height: 400px;  width: 660px;">
+                                </div>
+                            </div><br>
+                            <div id="gudang">
+                                <div class="card card-body" style="color: black;">
+                                    <img class="mx-auto" src="{{ asset('img/gudang.png') }}" style="height: 400px;  width: 660px;">
+                                </div>
+                            </div><br>
+                            <div id="akuntansi">
+                                <div class="card card-body" style="color: black;">
+                                    <img class="mx-auto" src="{{ asset('img/akuntansi.png') }}" style="height: 400px;  width: 660px;">
+                                </div>
+                            </div><br>
+                        </div>
 
-                </div>                
+                    </div>                
 
+                </div>
             </div>
 
         </div>
-    @include("layouts/footer")
+    <div id="about"> @include("layouts/footer")</div>
     </body>
 
     </html>
