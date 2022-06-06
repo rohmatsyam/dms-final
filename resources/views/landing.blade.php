@@ -16,7 +16,7 @@
     <div class="container">
         {{-- Header --}}
         <header
-            class="flex-wrap py-3 mb-4 d-flex align-items-center justify-content-center justify-content-md-between border-bottom">
+            class="flex-wrap py-3 mb-4 d-flex align-items-center justify-content-center justify-content-md-between border-bottom sticky-top bg-white">
             <a href="/" class="mb-2 d-flex align-items-center col-md-3 mb-md-0 text-dark text-decoration-none">
                 <img src="{{ asset('img/logodms.png') }}" style="height: 40px;  width: 75px;">
             </a>
@@ -100,7 +100,65 @@
                 </div>
             </div>
         </div>
-        @include('layouts/footer')
+
+        {{-- Fitur --}}
+        <div id="fitur">
+            <div class="container text-capitalize">
+                <h4 style="text-align: center; text-transform: uppercase; font-weight: bolder;">Fitur DMS Omni-Channel</h4>
+                <div class="row">
+                    <div class="col-md-3 themed-grid-col">
+                        <ul class="main-menu">
+                            <a class="btn" href="#katalog"
+                                style="background-color: #f1f1f1; display: block; font-weight: bolder;">Katalog</a><br>
+                            <a class="btn" href="#pesanan"
+                                style="background-color: #f1f1f1; display: block; font-weight: bolder;">Pesanan</a><br>
+                            <a class="btn" href="#persediaan"
+                                style="background-color: #f1f1f1; display: block; font-weight: bolder;">Persediaan</a><br>
+                            <a class="btn" href="#gudang"
+                                style="background-color: #f1f1f1; display: block; font-weight: bolder;">Managemen
+                                Gudang</a><br>
+                            <a class="btn" href="#akuntansi"
+                                style="background-color: #f1f1f1; display: block; font-weight: bolder;">Akuntansi</a><br>
+                        </ul>
+                    </div>
+                    <div class="col-md-8 themed-grid-col">
+                        <div id="katalog">
+                            <div class="card card-body" style="color: black;">
+                                <img class="mx-auto" src="{{ asset('img/katalog.png') }}"
+                                    style="height: 400px;  width: 660px;">
+                            </div>
+                        </div><br>
+                        <div id="pesanan">
+                            <div class="card card-body" style="color: black;">
+                                <img class="mx-auto" src="{{ asset('img/pesanan.png') }}"
+                                    style="height: 400px;  width: 660px;">
+                            </div>
+                        </div><br>
+                        <div id="persediaan">
+                            <div class="card card-body" style="color: black;">
+                                <img class="mx-auto" src="{{ asset('img/persediaan.png') }}"
+                                    style="height: 400px;  width: 660px;">
+                            </div>
+                        </div><br>
+                        <div id="gudang">
+                            <div class="card card-body" style="color: black;">
+                                <img class="mx-auto" src="{{ asset('img/gudang.png') }}"
+                                    style="height: 400px;  width: 660px;">
+                            </div>
+                        </div><br>
+                        <div id="akuntansi">
+                            <div class="card card-body" style="color: black;">
+                                <img class="mx-auto" src="{{ asset('img/akuntansi.png') }}"
+                                    style="height: 400px;  width: 660px;">
+                            </div>
+                        </div><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="about"> @include('layouts/footer')</div>
+
     </body>
 
     </html>
