@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class CreateProduct extends Component
 {
-    public $attributes;
+    public $attributes;    
     public function render()
     {
         $json = Storage::disk('public')->get('attributes.json');

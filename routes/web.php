@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'],function(){
     // CRUD Produk    
     Route::group(['prefix' => 'lazada', 'middleware' => ['isLazada']], function(){
         Route::get('/home',function(){return view('lazada');})->name('lazadahome');        
-        Route::get('/getcategoryattributes', [\App\Http\Controllers\CrudProduct::class, 'GetCategoryAttributes'])->name('getcategoryattributes');
+        Route::post('/getcategoryattributes', [\App\Http\Controllers\CrudProduct::class, 'GetCategoryAttributes'])->name('getcategoryattributes');
         Route::post('/createproduct', [\App\Http\Controllers\CrudProduct::class, 'CreateProduct'])->name('createproduct');
     });
 });

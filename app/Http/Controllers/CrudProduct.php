@@ -18,11 +18,15 @@ class CrudProduct extends Controller
         $request->addApiParam('language_code','id_ID');
         $hasil = $c->execute($request);
         $dataEncode = json_decode($hasil);
-        Storage::disk('public')->put('attributes.json', json_encode($dataEncode->data));        
+        Storage::disk('public')->put('attributes.json', json_encode($dataEncode->data));
+
+        $productName = $r->productName;        
+        view()->share('productName',$productName);        
         return view('createproduct');        
     }
 
     public function CreateProduct(Request $r){        
+      dd($r->all());
         $c = new LazopClient($this->url,env('LAZADA_KEY'),env('LAZADA_SECRET'));
         $request = new LazopRequest('/product/create');
         $request->addApiParam('payload', '{

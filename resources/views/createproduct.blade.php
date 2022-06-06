@@ -7,13 +7,7 @@
 
     <div class="card my-4">
         <div class="card-body">
+            <h2 class="text-center">{{ $productName }}</h2>
             @livewire('create-product')
         </div>
-        {{-- <form method="POST" action="{{ route('createproduct') }}">
-                @csrf
-                <x-input name="accessToken" type="hidden" value="{{ $access_token }}" />
-                <x-button>
-                    {{ __('Store Product') }}
-                </x-button>
-            </form> --}}
 </x-app-layout>

@@ -20,10 +20,16 @@ class CategorySelect extends Component
     }    
 
     public $category_id;
-    protected $listeners = ['getCategory'];
+    public $product_name;
+    protected $listeners = ['getCategory','getProductName'];
     public function getCategory($value){
         if(!is_null($value)){
             $this->category_id = $value;
+        }
+    }
+    public function getProductName($value){
+        if(!is_null($value)){
+            $this->product_name = $value;
         }
     }
 }
