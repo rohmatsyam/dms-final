@@ -1,6 +1,6 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="h4 font-weight-bold">
+        <h2 class="fw-bold m-0">
             {{ __('Admins') }}
         </h2>
     </x-slot>

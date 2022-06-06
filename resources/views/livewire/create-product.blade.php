@@ -67,9 +67,11 @@ $mandatorySplits = array_chunk($mandatory, 2);
                     </select>
                 </div>
             </div>
-            <div>
-                <input name="accessToken" type="hidden" value="{{ $access_token }}">
-                <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="row mt-2 justify-content-center items-center">
+                <div class="col-sm-6 text-center">
+                    <input name="accessToken" type="hidden" value="{{ $access_token }}">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </form>
     </div>
