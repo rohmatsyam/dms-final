@@ -38,7 +38,7 @@ class isLazada
             $refresh_expires_at = $this->convertDate($seller->refresh_expires_at);
             $now = Carbon::now()->format('Y/m/d');
             if($now < $token_expires_at){
-                $request->merge(['seller_id'=>$seller->seller_id]);
+                $request->merge(['seller_id'=>$seller->seller_id,'access_token' => $seller->access_token]);
                 view()->share(['access_token' => $seller->access_token,'message'=>"Access token is available, valid until ".Carbon::parse($token_expires_at)->diffForHumans()]);
             }else{
                 if($now < $refresh_expires_at){
@@ -56,7 +56,7 @@ class isLazada
                         'token_expires_at' => $token_expires_at,
                         'refresh_token' => $refresh_token,                
                     ]);
-                    $request->merge(['seller_id'=>$seller->seller_id]);
+                    $request->merge(['seller_id'=>$seller->seller_id,'access_token' => $seller->access_token]);
                     view()->share(['access_token' => $access_token,'message'=>"Success update access token, valid until ".Carbon::parse($token_expires_at)->diffForHumans()]);                    
                 } 
             }           

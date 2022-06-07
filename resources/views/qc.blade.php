@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="fw-bold m-0">
-            {{ __('Product') }}
+            {{ __('QC Status') }}
         </h2>
     </x-slot>
 

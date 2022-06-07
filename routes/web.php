@@ -39,9 +39,12 @@ Route::group(['middleware' => 'auth'],function(){
         Route::get('/getcategoryattributes', [\App\Http\Controllers\CrudProduct::class, 'GetCategoryAttributes'])->name('getcategoryattributes');
         Route::post('/createproduct', [\App\Http\Controllers\CrudProduct::class, 'CreateProduct'])->name('createproduct');
 
-        // ProductController
-        Route::get('/product',[\App\Http\Controllers\ProductController::class, 'index'])->name('producthome');        
-        Route::post('/getqc',[\App\Http\Controllers\ProductController::class, 'getqc'])->name('getqc');        
+        // QC Controller
+        Route::get('/checkqc',[\App\Http\Controllers\QCController::class, 'index'])->name('qchome');        
+        Route::post('/getqc',[\App\Http\Controllers\QCController::class, 'getqc'])->name('getqc');        
+
+        // Product Controller
+        Route::get('/product',[\App\Http\Controllers\ProductController::class, 'getAllProduct'])->name('producthome');
     });
 });
 
