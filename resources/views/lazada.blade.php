@@ -9,7 +9,16 @@
         <div class="card-body">
             {{-- $access_token dan $message udah include di middleware --}}
             @if (isset($message))
-                {{ $message }}
+                <div class="row justify-content-center">
+                    <div class="col-sm-6 card text-center rounded shadow-sm p-0">
+                        <div class="card-header bg-info text-dark">
+                            Message
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ $message }}</p>
+                        </div>
+                    </div>
+                </div>
             @endif
             @livewire('category-select')
         </div>

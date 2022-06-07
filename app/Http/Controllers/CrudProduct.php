@@ -83,5 +83,7 @@ class CrudProduct extends Controller
       );
       return json_encode($payloadArray);      
     }
-    
+    public function GetQcStatus(){
+      
+    }
 }

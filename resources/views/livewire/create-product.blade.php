@@ -12,7 +12,6 @@ $mandatorySplits = array_chunk($mandatory, 2);
 ?>
 <div>
     <div class="col-sm-6 mx-auto">
-        <h5>Create Product</h5>
         <form method="POST" action="{{ route('createproduct') }}">
             @csrf
             <div class="form-text">Required Input</div>

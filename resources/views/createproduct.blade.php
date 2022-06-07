@@ -7,7 +7,7 @@
 
     <div class="card my-4">
         <div class="card-body">
-            <h2 class="text-center">{{ $productName }}</h2>
-            @livewire('create-product')
+            <h4 class="text-center fw-bold">{{ $productName }}</h2>
+                @livewire('create-product')
         </div>
 </x-app-layout>

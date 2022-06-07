@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'],function(){
         Route::get('/home',function(){return view('lazada');})->name('lazadahome');        
         Route::get('/getcategoryattributes', [\App\Http\Controllers\CrudProduct::class, 'GetCategoryAttributes'])->name('getcategoryattributes');
         Route::post('/createproduct', [\App\Http\Controllers\CrudProduct::class, 'CreateProduct'])->name('createproduct');
+
+        Route::get('/product',function(){return view('product');})->name('producthome');
     });
 });
 
