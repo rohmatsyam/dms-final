@@ -14,11 +14,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $url = "https://api.lazada.co.id/rest";
+    protected $url = "https://api.lazada.co.id/rest";    
     public function index(Request $request)
     {
         $seller_id = $request->seller_id;
-        $products = DB::table('seller_products')->where('seller_id',$seller_id)->get();
+        $products = DB::table('seller_products')->where('seller_id',$seller_id)->get();        
         return view('product',compact('products'));
     }
 
@@ -93,6 +93,15 @@ class ProductController extends Controller
         $request->addApiParam('offset','1');
         $request->addApiParam('limit','100');
         $request->addApiParam('seller_skus',"[\"{$req->seller_skus}\"]");
-        var_dump($c->execute($request, $req->accessToken));
+        $response = $c->execute($request, $req->accessToken);
+
+        $hasil = json_decode($response);
+
+        $seller_id = $req->seller_id;
+        $products = DB::table('seller_products')->where('seller_id',$seller_id)->get();
+
+        if($hasil->code == "0"){
+            return view('product',['hasil'=>$hasil->data,'products'=>$products]);
+        };
     }
 }

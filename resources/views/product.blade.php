@@ -8,14 +8,20 @@
     <div class="card my-4">
         <div class="card-body">
             {{-- $access_token dan $message udah include di middleware --}}
-            @if (isset($message))
-                {{ $message }}
-            @endif
-            {{-- @livewire('category-select') --}}
 
-            <p>Product disini</p>
+            @if (isset($hasil))
+                <div class="row justify-content-center">
+                    <div class="col-sm-6 card text-center rounded shadow-sm p-0">
+                        <div class="card-header bg-info text-dark">
+                            Message
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ $hasil[0]->status }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
             <div>
-                <p class="fw-bolder">Table product with getQC</p>
                 <h2 class="fw-bolder text-center">Product Masuk</h2>
                 <div class="row">
                     <div class="col-sm-8 mx-auto">
