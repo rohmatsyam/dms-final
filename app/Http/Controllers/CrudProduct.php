@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SellerProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Lazada\LazopClient;
 use Lazada\LazopRequest;
 
 class CrudProduct extends Controller
 {    
-    protected $url = "https://api.lazada.co.id/rest";    
+    protected $url = "https://api.lazada.co.id/rest";        
 
     public function GetCategoryAttributes(Request $r){        
         $c = new LazopClient($this->url,env('LAZADA_KEY'),env('LAZADA_SECRET'));
@@ -26,60 +28,60 @@ class CrudProduct extends Controller
         return view('createproduct');        
     }
 
-    public function CreateProduct(Request $r){        
-      dd($r->all());
+    public function CreateProduct(Request $r){    
+        $payload = $this->makePayload($r->all());        
         $c = new LazopClient($this->url,env('LAZADA_KEY'),env('LAZADA_SECRET'));
         $request = new LazopRequest('/product/create');
-        $request->addApiParam('payload', '{
-            "Request": {
-              "Product": {
-                "PrimaryCategory": "10100795",
-                "Images": {
-                  "Image": [
-                    "https://sg-live-02.slatic.net/p/357ae309dc5ada4b6ce2c55feb37ee06.jpg"
-                  ]
-                },
-                "Attributes": {
-                  "name": "test",
-                  "description": "",
-                  "brand": "No Brand",
-                  "model": "test",
-                  "waterproof": "Waterproof",
-                  "warranty_type": "Local seller warranty",
-                  "warranty": "1 Month",
-                  "short_description": "",
-                  "Hazmat": "None",
-                  "material": "Leather",
-                  "laptop_size": "11 - 12 inches",
-                  "delivery_option_express": "Yes",
-                  "Delivery_Option_Instant": "Yes",
-                  "delivery_option_economy": "Yes",
-                  "delivery_option_standard": "YES",
-                  "delivery_option_sof": "No"
-                },
-                "Skus": {
-                  "Sku": [
-                    {
-                      "SellerSku": "chase test 4",
-                      "quantity": "3",
-                      "price": "35",
-                      "package_height": "10",
-                      "package_length": "10",
-                      "package_width": "10",
-                      "package_weight": "0.5",
-                      "package_content": "laptop bag",
-                      "Images": {
-                        "Image": [
-                          "https://sg-live-02.slatic.net/p/3d93a6653bb07463c937993b4868f52e.jpg"
-                        ]
-                      }
-                    }
-                  ]
-                },
-                "trialProduct": "false"
-              }
-            }
-          }');
-        var_dump($c->execute($request, $r->accessToken));
+        $request->addApiParam('payload', $payload);
+        $response = $c->execute($request, $r->accessToken);
+        $hasil = json_decode($response);
+        // dd(gettype($hasil->code));
+        if($hasil->code == "0"){
+          $user_id = auth()->user()->id;
+          $seller = DB::table('seller_lazadas')->where('user_id',$user_id)->first();
+          $seller_id = $seller->seller_id;
+          // Create product detail
+          SellerProduct::create([
+            'item_id' => $hasil->data->item_id,
+            'seller_id' => $seller_id,
+            'shop_sku' => $hasil->data->sku_list[0]->shop_sku,
+            'seller_sku' => $hasil->data->sku_list[0]->seller_sku,
+            'sku_id' => $hasil->data->sku_list[0]->sku_id,
+          ],200);
+          return view('lazada',['message'=>"Success stored a product"]);
+        }else{
+          return redirect()->route('lazadahome',['message' => "Can't store product because ".$hasil->message]);
+        }        
     }
+    protected function makePayload($r){             
+      $payloadArray = Array (
+        "Request" => Array (
+          "Product" => Array(
+            "PrimaryCategory" => "{$r['categoryId']}",
+            "Images" => Array(
+              "Image"=>["https://sg-live-02.slatic.net/p/357ae309dc5ada4b6ce2c55feb37ee06.jpg"]
+            ),
+            "Attributes" => Array(
+              "name" => "{$r['name']}",
+              "brand" => "{$r['brand']}",
+            ),
+            "Skus" => Array(
+              "Sku" => [
+                Array(
+                  "SellerSku" => "{$r['SellerSku']}",
+                  "price" => "{$r['price']}",
+                  "package_height"=> "{$r['package_height']}",
+                  "package_length"=> "{$r['package_length']}",
+                  "package_width"=> "{$r['package_width']}",
+                  "package_weight"=> "{$r['package_weight']}",
+                )
+              ],
+            ),
+            "trialProduct" => "true",            
+          )
+        )
+      );
+      return json_encode($payloadArray);      
+    }
+    
 }

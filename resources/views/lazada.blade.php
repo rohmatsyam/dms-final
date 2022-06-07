@@ -8,6 +8,9 @@
     <div class="card my-4">
         <div class="card-body">
             {{-- $access_token dan $message udah include di middleware --}}
+            @if (isset($message))
+                {{ $message }}
+            @endif
             @livewire('category-select')
         </div>
 </x-app-layout>
