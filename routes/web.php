@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'],function(){
 
         // Product Controller
         Route::get('/product',[\App\Http\Controllers\ProductController::class, 'getAllProduct'])->name('producthome');
+        Route::post('/deactivate',[\App\Http\Controllers\ProductController::class, 'deactivateProduct'])->name('deactivateproduct');
     });
 });
 

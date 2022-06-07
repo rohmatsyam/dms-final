@@ -45,7 +45,6 @@
                                         <td>{{ $product->seller_sku }}</td>
                                         <td>{{ $product->sku_id }}</td>
                                         <td>
-                                            {{-- <form action="{{ route('admins.destroy', ['admin' => $admin]) }}" method="GET"> --}}
                                             <form action="{{ route('getqc') }}" method="POST">
                                                 @csrf
                                                 <input name="accessToken" type="hidden" value="{{ $access_token }}">
