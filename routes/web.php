@@ -39,7 +39,9 @@ Route::group(['middleware' => 'auth'],function(){
         Route::get('/getcategoryattributes', [\App\Http\Controllers\CrudProduct::class, 'GetCategoryAttributes'])->name('getcategoryattributes');
         Route::post('/createproduct', [\App\Http\Controllers\CrudProduct::class, 'CreateProduct'])->name('createproduct');
 
-        Route::get('/product',function(){return view('product');})->name('producthome');
+        // ProductController
+        Route::get('/product',[\App\Http\Controllers\ProductController::class, 'index'])->name('producthome');        
+        Route::post('/getqc',[\App\Http\Controllers\ProductController::class, 'getqc'])->name('getqc');        
     });
 });
 
