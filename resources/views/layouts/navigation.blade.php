@@ -19,9 +19,6 @@
                 <x-nav-link href="{{ route('lazadahome') }}" :active="request()->routeIs('lazadahome')">
                     {{ __('Lazada') }}
                 </x-nav-link>
-                <x-nav-link href="{{ route('qchome') }}" :active="request()->routeIs('qchome')">
-                    {{ __('Check QC') }}
-                </x-nav-link>
                 <x-nav-link href="{{ route('producthome') }}" :active="request()->routeIs('producthome')">
                     {{ __('Products') }}
                 </x-nav-link>
@@ -47,7 +44,7 @@
                                 @csrf
                                 <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
-                                                                                                                this.closest('form').submit();">
+                                                                                                                    this.closest('form').submit();">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>

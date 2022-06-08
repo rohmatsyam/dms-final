@@ -59,11 +59,27 @@ $mandatorySplits = array_chunk($mandatory, 2);
             <div class="mt-2">
                 <div class="form-text">Optional Input</div>
                 <div class="form-group border border-warning rounded">
-                    <select class="form-select">
+                    @foreach ($optional as $kunci => $opt)
+                        @if ($opt->name == 'description')
+                            <div class="col-sm-6">
+                                <label for={{ $opt->name }} class="form-label my-0">{{ $opt->label }}</label>
+                                <input type="text" class="form-control my-0" id={{ $opt->name }}
+                                    name="{{ $opt->name }}">
+                            </div>
+                        @endif
+                        @if ($opt->name == 'quantity')
+                            <div class="col-sm-6">
+                                <label for={{ $opt->name }} class="form-label my-0">{{ $opt->label }}</label>
+                                <input type="number" class="form-control my-0" id={{ $opt->name }}
+                                    name="{{ $opt->name }}">
+                            </div>
+                        @endif
+                    @endforeach
+                    {{-- <select class="form-select">
                         @foreach ($optional as $kunci => $opt)
                             <option value={{ $kunci }}>{{ $opt->label }}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
                 </div>
             </div>
             <div class="row mt-2 justify-content-center items-center">

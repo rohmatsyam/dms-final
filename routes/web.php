@@ -37,11 +37,7 @@ Route::group(['middleware' => 'auth'],function(){
     Route::group(['prefix' => 'lazada', 'middleware' => ['isLazada']], function(){
         Route::get('/home',function(){return view('lazada');})->name('lazadahome');        
         Route::get('/getcategoryattributes', [\App\Http\Controllers\CrudProduct::class, 'GetCategoryAttributes'])->name('getcategoryattributes');
-        Route::post('/createproduct', [\App\Http\Controllers\CrudProduct::class, 'CreateProduct'])->name('createproduct');
-
-        // QC Controller
-        Route::get('/checkqc',[\App\Http\Controllers\QCController::class, 'index'])->name('qchome');        
-        Route::post('/getqc',[\App\Http\Controllers\QCController::class, 'getqc'])->name('getqc');        
+        Route::post('/createproduct', [\App\Http\Controllers\CrudProduct::class, 'CreateProduct'])->name('createproduct');        
 
         // Product Controller
         Route::get('/product',[\App\Http\Controllers\ProductController::class, 'getAllProduct'])->name('producthome');

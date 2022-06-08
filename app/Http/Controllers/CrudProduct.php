@@ -35,19 +35,8 @@ class CrudProduct extends Controller
         $request->addApiParam('payload', $payload);
         $response = $c->execute($request, $r->accessToken);
         $hasil = json_decode($response);
-        // dd(gettype($hasil->code));
-        if($hasil->code == "0"){
-          $user_id = auth()->user()->id;
-          $seller = DB::table('seller_lazadas')->where('user_id',$user_id)->first();
-          $seller_id = $seller->seller_id;
-          // Create product detail
-          SellerProduct::create([
-            'item_id' => $hasil->data->item_id,
-            'seller_id' => $seller_id,
-            'shop_sku' => $hasil->data->sku_list[0]->shop_sku,
-            'seller_sku' => $hasil->data->sku_list[0]->seller_sku,
-            'sku_id' => $hasil->data->sku_list[0]->sku_id,
-          ],200);
+        
+        if($hasil->code == "0"){          
           return view('lazada',['message'=>"Success stored a product"]);
         }else{
           return redirect()->route('lazadahome',['message' => "Can't store product because ".$hasil->message]);
@@ -63,12 +52,14 @@ class CrudProduct extends Controller
             ),
             "Attributes" => Array(
               "name" => "{$r['name']}",
+              "description" => "{$r['description']}",
               "brand" => "{$r['brand']}",
             ),
             "Skus" => Array(
               "Sku" => [
                 Array(
                   "SellerSku" => "{$r['SellerSku']}",
+                  "quantity" => "{$r['quantity']}",
                   "price" => "{$r['price']}",
                   "package_height"=> "{$r['package_height']}",
                   "package_length"=> "{$r['package_length']}",
