@@ -11,7 +11,7 @@ use Lazada\LazopRequest;
 
 class LazopController extends Controller
 {    
-    private $lazadaUrl = "https://api.lazada.com.my/rest"; ffs
+    private $lazadaUrl = "https://api.lazada.com.my/rest";
     public function callbackAuth(Request $request){        
         $code = $request->code;        
         $lazOp = new LazopClient($this->lazadaUrl, env('LAZADA_KEY'), env('LAZADA_SECRET'));
