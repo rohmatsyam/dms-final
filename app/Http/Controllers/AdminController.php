@@ -59,9 +59,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
-    {                
-        //    
+    public function show(Admin $admin,Request $request)
+    {           
+        $name = $admin->attributes['name'];
+        $email = $admin->attributes['email'];                
+        return redirect()->route('admins.index',['name'=>$name,'email'=>$email]);
     }
 
     /**

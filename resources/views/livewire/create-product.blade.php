@@ -10,9 +10,10 @@ foreach ($attributes as $key => $item) {
 }
 $mandatorySplits = array_chunk($mandatory, 2);
 ?>
+
 <div>
     <div class="col-sm-6 mx-auto">
-        <form method="POST" action="{{ route('createproduct') }}">
+        <form method="POST" action="{{ route('createproduct') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-text">Required Input</div>
             <div class="form-group border border-danger rounded">
@@ -58,20 +59,28 @@ $mandatorySplits = array_chunk($mandatory, 2);
             {{-- Optional --}}
             <div class="mt-2">
                 <div class="form-text">Optional Input</div>
-                <div class="form-group border border-warning rounded">
+                <div
+                    class="form-group border border-warning rounded justify-content-center d-flex flex-column align-items-center">
                     @foreach ($optional as $kunci => $opt)
                         @if ($opt->name == 'description')
-                            <div class="col-sm-6">
+                            <div class="col-sm-8">
                                 <label for={{ $opt->name }} class="form-label my-0">{{ $opt->label }}</label>
                                 <input type="text" class="form-control my-0" id={{ $opt->name }}
                                     name="{{ $opt->name }}">
                             </div>
                         @endif
                         @if ($opt->name == 'quantity')
-                            <div class="col-sm-6">
+                            <div class="col-sm-8">
                                 <label for={{ $opt->name }} class="form-label my-0">{{ $opt->label }}</label>
                                 <input type="number" class="form-control my-0" id={{ $opt->name }}
                                     name="{{ $opt->name }}">
+                            </div>
+                        @endif
+                        @if ($opt->name == '__images__')
+                            <div class="col-sm-8">
+                                {{-- label == Gambar --}}
+                                <label for="Gambar" class="form-label my-0">Pilih gambar</label>
+                                <input type="file" class="form-control my-0" id="Gambar" name="Gambar">
                             </div>
                         @endif
                     @endforeach

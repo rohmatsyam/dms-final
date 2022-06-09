@@ -31,17 +31,11 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>ID</th>
-                                                <th>Category</th>
-                                                <th>SKU ID</th>
                                                 <th>Nama</th>
                                                 <th>Brand</th>
+                                                <th>Gambar</th>
                                                 <th>Jumlah</th>
                                                 <th>Lebar</th>
-                                                <th>Tinggi</th>
-                                                <th>Panjang</th>
-                                                <th>Berat</th>
-                                                <th>Harga</th>
                                                 <th>Status</th>
                                                 <th>Deactivate</th>
                                                 <th>Delete</th>
@@ -53,16 +47,13 @@
                                                     <th scope="row">
                                                         {{ $key + 1 }}
                                                     </th>
-                                                    <td>{{ $product->item_id }}</td>
-                                                    <td>{{ $product->primary_category }}</td>
-                                                    <td>{{ $product->skus[0]->SkuId }}</td>
                                                     <td>{{ $product->attributes->name }}</td>
                                                     <td>{{ $product->attributes->brand }}</td>
+                                                    <td>
+                                                        {{-- gambar --}}
+                                                        <img src="{{ $product->images[0] }}" style="width: 50px">
+                                                    </td>
                                                     <td>{{ $product->skus[0]->quantity }}</td>
-                                                    <td>{{ $product->skus[0]->package_width }}</td>
-                                                    <td>{{ $product->skus[0]->package_height }}</td>
-                                                    <td>{{ $product->skus[0]->package_length }}</td>
-                                                    <td>{{ $product->skus[0]->package_weight }}</td>
                                                     <td>{{ $product->skus[0]->price }}</td>
                                                     <td>{{ $product->status }}</td>
                                                     <td>
