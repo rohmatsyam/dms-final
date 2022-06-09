@@ -31,7 +31,7 @@ $mandatorySplits = array_chunk($mandatory, 2);
                             @else
                                 <label for={{ $item[0]->name }} class="form-label my-0">{{ $item[0]->label }}</label>
                                 <input type={{ $item[0]->input_type }} class="form-control" id={{ $item[0]->name }}
-                                    name="{{ $item[0]->name }}">
+                                    name="{{ $item[0]->name }}" required>
                             @endif
                         </div>
                         @if (array_key_exists(1, $item))
@@ -48,7 +48,7 @@ $mandatorySplits = array_chunk($mandatory, 2);
                                     <label for={{ $item[1]->name }}
                                         class="form-label my-0">{{ $item[1]->label }}</label>
                                     <input type={{ $item[1]->input_type }} class="form-control my-0"
-                                        id={{ $item[1]->name }} name="{{ $item[1]->name }}">
+                                        id={{ $item[1]->name }} name="{{ $item[1]->name }}" required>
                                 @endif
                             </div>
                         @endif
@@ -59,36 +59,43 @@ $mandatorySplits = array_chunk($mandatory, 2);
             {{-- Optional --}}
             <div class="mt-2">
                 <div class="form-text">Optional Input</div>
-                <div
-                    class="form-group border border-warning rounded justify-content-center d-flex flex-column align-items-center">
+                <div class="form-group border border-warning rounded">
                     @foreach ($optional as $kunci => $opt)
                         @if ($opt->name == 'description')
-                            <div class="col-sm-8">
-                                <label for={{ $opt->name }} class="form-label my-0">{{ $opt->label }}</label>
-                                <input type="text" class="form-control my-0" id={{ $opt->name }}
-                                    name="{{ $opt->name }}">
-                            </div>
-                        @endif
-                        @if ($opt->name == 'quantity')
-                            <div class="col-sm-8">
-                                <label for={{ $opt->name }} class="form-label my-0">{{ $opt->label }}</label>
-                                <input type="number" class="form-control my-0" id={{ $opt->name }}
-                                    name="{{ $opt->name }}">
-                            </div>
-                        @endif
-                        @if ($opt->name == '__images__')
-                            <div class="col-sm-8">
-                                {{-- label == Gambar --}}
-                                <label for="Gambar" class="form-label my-0">Pilih gambar</label>
-                                <input type="file" class="form-control my-0" id="Gambar" name="Gambar">
+                            <div class="row my-2 justify-content-center">
+                                <div class="col-sm-8">
+                                    <label for={{ $opt->name }} class="form-label my-0">Masukkan Deskripsi panjang
+                                        :</label>
+                                    <input type="text" class="form-control my-0" id={{ $opt->name }}
+                                        name="{{ $opt->name }}" required>
+                                    <div class="form-text">Disarankan > 30 kata</div>
+                                </div>
                             </div>
                         @endif
                     @endforeach
-                    {{-- <select class="form-select">
-                        @foreach ($optional as $kunci => $opt)
-                            <option value={{ $kunci }}>{{ $opt->label }}</option>
-                        @endforeach
-                    </select> --}}
+                    @foreach ($optional as $kunci => $opt)
+                        @if ($opt->name == 'quantity')
+                            <div class="row my-2 justify-content-center">
+                                <div class="col-sm-8">
+                                    <label for={{ $opt->name }} class="form-label my-0">Masukkan Jumlah :</label>
+                                    <input type="number" class="form-control my-0" id={{ $opt->name }}
+                                        name="{{ $opt->name }}" required>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                    @foreach ($optional as $kunci => $opt)
+                        @if ($opt->name == '__images__')
+                            <div class="row my-2 justify-content-center">
+                                <div class="col-sm-8">
+                                    {{-- label == Gambar --}}
+                                    <label for="Gambar" class="form-label my-0">Pilih gambar</label>
+                                    <input type="file" class="form-control my-0" id="Gambar" name="Gambar" required>
+                                    <div class="form-text">Ukuran antara 330x330 dan 5000x5000 px, max 2 MB</div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="row mt-2 justify-content-center items-center">

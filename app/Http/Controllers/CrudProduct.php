@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Lazada\LazopClient;
 use Lazada\LazopRequest;
 
@@ -13,6 +14,13 @@ class CrudProduct extends Controller
 
   public function GetCategoryAttributes(Request $r)
   {
+    $validator = Validator::make($r->all(), [
+      'categoryId' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+      return redirect()->route('dashboard')->with('error', "Category kosong");
+    }
     $c = new LazopClient($this->url, env('LAZADA_KEY'), env('LAZADA_SECRET'));
     $request = new LazopRequest('/category/attributes/get', 'GET');
     $request->addApiParam('primary_category_id', $r->categoryattr);
@@ -44,9 +52,9 @@ class CrudProduct extends Controller
     $hasil = json_decode($response);
 
     if ($hasil->code == "0") {
-      return view('lazada', ['message' => "Success stored a product"]);
+      return redirect()->route('producthome')->with("success", "Success stored a product");
     } else {
-      return redirect()->route('lazadahome', ['message' => "Can't store product because " . $hasil->message]);
+      return redirect()->route('producthome')->with("error", "Can't store product because " . $hasil->message);
     }
   }
   protected function uploadImage($gambar, $accessToken)

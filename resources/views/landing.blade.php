@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
     <div class="container">
         {{-- Header --}}
         <header
@@ -35,10 +36,8 @@
                         @auth
                             <a href="{{ url('/dashboard') }}" class="btn btn-outline-primary me-2">Back to dashboard</a>
                         @else
-                            {{-- <a href="{{ route('login') }}" class="text-muted">Log in</a> --}}
                             <a type="button" class="btn btn-outline-primary me-2" href="{{ route('login') }}">Login</a>
                             @if (Route::has('register'))
-                                {{-- <a href="{{ route('register') }}" class="ms-4 text-muted">Register</a> --}}
                                 <a type="button" class="btn btn-primary" href="{{ route('register') }}">Register</a>
                             @endif
                     @endif
