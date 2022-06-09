@@ -1,3 +1,4 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -120,83 +121,44 @@
                 </div>
             </div>
         </div>
-     <!-- Area Chart -->
-     <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Grafik Penjualan & Pengembalian Barang</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <div id="myAreaChart" style="height: 100%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        
+    </div>
 
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Kategori Terbaik</h6>
-                                    <div class="pull-right" style="background-color: #004DC3; color: white; font-size: 10px; padding-left: 5px; padding-right: 5px;">
-                                            Bulan ini
-                                        </div>
-                                        
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                        <img src="{{ asset('img/kt.png') }}" class="img-thumnails" style="width: 100px; margin-top: 15px;">
-                                        </div>
-                                        <div class="col-md-7" style="text-align: center">
-                                            <label style=" font-size:medium; margin-top: 30px">sweet choco jacket</label> <p>terjual 5</p>
-                                        </div>
-                                    </div>
-
-                                    
-                                </div>
-                            </div>
-                        </div>
+    <div class="my-4 card">
+        <div class="row">
+            <div class="col-xl-8">
+                <div class="card-header">
+                    <h6 class="m-0 font-weight-bold text-primary">Grafik Penjualan & Pengembalian Barang</h6>                            
+                </div>
+                <div class="card-body">
+                    <div id="myAreaChart" style="height: 400px;"></div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Kategori Terbaik</h6>
+                    <div class="pull-right" style="background-color: #004DC3; color: white; font-size: 10px; padding-left: 5px; padding-right: 5px;">
+                            Bulan ini
                     </div>
-
-                            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span> &copy; 2022 Copyright: PT. Digital Multisite Indonesia</span>
+                        
+                </div>
+                <div class="card-body">
+                    <div class="row" style="height: 400px;">
+                        <div class="col-md-5" style="padding: 100px 0;">
+                        <img src="{{ asset('img/kt.png') }}" class="img-thumnails" style="width: 150px;">
+                        </div>
+                        <div class="col-md-7" style="text-align: center; padding: 100px 0;">
+                            <label style=" font-size:24px; margin-top: 30px">sweet choco jacket</label> <p>terjual 5</p>
+                        </div>
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
-
+            </div>
         </div>
-        <!-- End of Content Wrapper -->
     </div>
 </x-admin-layout>
 
+    
 <script type="text/javascript">
 
   var chart;
