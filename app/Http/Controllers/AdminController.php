@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -17,7 +18,7 @@ class AdminController extends Controller
     public function index()
     {
         $admins = Admin::paginate();
-        return view('admin.admins',compact('admins'));
+        return view('admin.admins', compact('admins'));
     }
 
     /**
@@ -50,7 +51,7 @@ class AdminController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('admins.index')->with('message','Admin saved successfully');
+        return redirect()->route('admins.index')->with('message', 'Admin saved successfully');
     }
 
     /**
@@ -59,11 +60,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin,Request $request)
-    {           
-        $name = $admin->attributes['name'];
-        $email = $admin->attributes['email'];                
-        return redirect()->route('admins.index',['name'=>$name,'email'=>$email]);
+    public function show(Admin $admin, Request $request)
+    {
+        //
     }
 
     /**
@@ -96,8 +95,15 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Admin $admin)
-    {        
-        $admin->delete();        
-        return redirect()->route('admins.index')->with('message','Admin with id '.$admin->id.' success deleted');
+    {
+        $admin->delete();
+        return redirect()->route('admins.index')->with('message', 'Admin with id ' . $admin->id . ' success deleted');
+    }
+
+    public function getDashboard()
+    {
+        $admin = Admin::all();
+        $user = User::all();
+        return view('admin.dashboard', ['jumlahAdmin' => count($admin), 'jumlahUser' => count($user)]);
     }
 }

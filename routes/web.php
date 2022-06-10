@@ -56,9 +56,10 @@ require __DIR__ . '/auth.php';
 
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard');
-        })->name('admin.dashboard');
+        // Route::get('/dashboard', function () {
+        //     return view('admin.dashboard');
+        // })->name('admin.dashboard');
+        Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'getDashboard'])->name('admin.dashboard');
 
         Route::resource('/users', \App\Http\Controllers\UserController::class);
         Route::resource('/admins', \App\Http\Controllers\AdminController::class);

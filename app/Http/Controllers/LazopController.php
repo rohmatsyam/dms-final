@@ -10,20 +10,21 @@ use Lazada\LazopClient;
 use Lazada\LazopRequest;
 
 class LazopController extends Controller
-{    
+{
     private $lazadaUrl = "https://api.lazada.com.my/rest";
-    public function callbackAuth(Request $request){        
-        $code = $request->code;        
+    public function callbackAuth(Request $request)
+    {
+        $code = $request->code;
         $lazOp = new LazopClient($this->lazadaUrl, env('LAZADA_KEY'), env('LAZADA_SECRET'));
         $lazRequest = new LazopRequest('/auth/token/create');
         // Request Params
-        $lazRequest->addApiParam('code', $code);        
+        $lazRequest->addApiParam('code', $code);
         // Process API 
         $response = $lazOp->execute($lazRequest); // JSON response
 
         // save token
-        $hasil = json_decode($response);        
-        SellerLazada::create([                
+        $hasil = json_decode($response);
+        SellerLazada::create([
             'seller_id' => $hasil->country_user_info[0]->seller_id,
             'user_id' => auth()->user()->id,
             'country' => $hasil->country_user_info[0]->country,
@@ -32,6 +33,6 @@ class LazopController extends Controller
             'refresh_token' => $hasil->refresh_token,
             'refresh_expires_at' => Carbon::now()->addDays(30)->format('Y-m-d'),
         ], 200);
-        return view('lazada',['access_token' => $hasil->access_token,'message'=>"Success stored access token"]);        
-    }    
+        return view('lazada', ['access_token' => $hasil->access_token, 'message' => "Success stored access token"]);
+    }
 }
