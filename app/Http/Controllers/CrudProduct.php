@@ -52,7 +52,8 @@ class CrudProduct extends Controller
     $hasil = json_decode($response);
 
     if ($hasil->code == "0") {
-      return redirect()->route('producthome')->with("success", "Success stored a product");
+      // return redirect()->route('producthome')->with("success", "Success stored a product");
+      return redirect(route('producthome'));
     } else {
       return redirect()->route('producthome')->with("error", "Can't store product because " . $hasil->message);
     }
