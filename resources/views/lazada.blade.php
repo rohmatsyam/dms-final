@@ -8,6 +8,12 @@
     <div class="card my-4">
         <div class="card-body">
             {{-- $access_token dan $message udah include di middleware --}}
+            @if ($pesan = Session::get('error'))
+                <div class="alert alert-danger alert-block">
+                    <button type="button" class="btn-close" data-dismiss="alert">x</button>
+                    <strong>{{ $pesan }}</strong>
+                </div>
+            @endif
             @if (isset($message))
                 <div class="row justify-content-center">
                     <div class="col-sm-6 card text-center rounded shadow-sm p-0">

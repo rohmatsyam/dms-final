@@ -12,6 +12,7 @@ class ProductController extends Controller
     protected $url = "https://api.lazada.co.id/rest";
     public function getAllProduct(Request $req)
     {
+        sleep(5);
         $req = $req->all();
         $c = new LazopClient($this->url, env('LAZADA_KEY'), env('LAZADA_SECRET'));
         $request = new LazopRequest('/products/get', 'GET');
@@ -20,7 +21,7 @@ class ProductController extends Controller
             $response = $c->execute($request, $req['access_token']);
         } catch (Throwable $e) {
             if ($e->getMessage() == "6") {
-                return redirect()->route('dashboard')->with('error', "You don't have internet connection");
+                return redirect(route('dashboard'))->with('error', "You don't have internet connection");
             }
         }
         $hasil = json_decode($response);
@@ -29,10 +30,10 @@ class ProductController extends Controller
                 $products = $hasil->data->products;
                 return view('products', compact('products'));
             } else {
-                return redirect()->route('lazadahome');
+                return redirect(route('lazadahome'))->with("error", $hasil->message);
             }
         } else {
-            dd($hasil);
+            return redirect(route('lazadahome'))->with("error", $hasil->message);
         }
     }
     public function deactivateProduct(Request $req)

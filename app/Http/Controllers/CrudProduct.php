@@ -19,7 +19,7 @@ class CrudProduct extends Controller
     ]);
 
     if ($validator->fails()) {
-      return redirect()->route('dashboard')->with('error', "Category kosong");
+      return redirect(route('lazadahome'))->with('error', "Category kosong");
     }
     $c = new LazopClient($this->url, env('LAZADA_KEY'), env('LAZADA_SECRET'));
     $request = new LazopRequest('/category/attributes/get', 'GET');
@@ -52,10 +52,9 @@ class CrudProduct extends Controller
     $hasil = json_decode($response);
 
     if ($hasil->code == "0") {
-      // return redirect()->route('producthome')->with("success", "Success stored a product");
-      return redirect(route('producthome'));
+      return redirect(route('producthome'))->with("success", "Success stored a product");
     } else {
-      return redirect()->route('producthome')->with("error", "Can't store product because " . $hasil->message);
+      return redirect(route('lazadahome'))->with("error", "Can't store product because " . $hasil->message);
     }
   }
   protected function uploadImage($gambar, $accessToken)
@@ -69,7 +68,7 @@ class CrudProduct extends Controller
     if ($hasil->code == "0") {
       return $hasil->data->image->url;
     } else {
-      return redirect()->route('lazadahome', ['message' => "Can't store product because " . $hasil->message]);
+      return redirect(route('lazadahome'))->with("error", "Can't store product because " . $hasil->message);
     }
   }
 
