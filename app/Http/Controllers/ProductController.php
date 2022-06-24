@@ -26,11 +26,12 @@ class ProductController extends Controller
         }
         $hasil = json_decode($response);
         if ($hasil->code == "0") {
-            if ($hasil->data->products) {
+            // dd(empty($hasil->data));
+            if (json_encode($hasil->data) == '{}') {
+                return view('products', ['products' => 0]);
+            } else {
                 $products = $hasil->data->products;
                 return view('products', compact('products'));
-            } else {
-                return redirect(route('lazadahome'))->with("error", $hasil->message);
             }
         } else {
             return redirect(route('lazadahome'))->with("error", $hasil->message);
