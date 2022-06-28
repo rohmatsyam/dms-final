@@ -29,7 +29,8 @@ $mandatorySplits = array_chunk($mandatory, 2);
                                     @endforeach
                                 </select>
                             @else
-                                <label for={{ $item[0]->name }} class="form-label my-0">{{ $item[0]->label }}</label>
+                                <label for={{ $item[0]->name }}
+                                    class="form-label my-0">{{ $item[0]->label }}</label>
                                 <input type={{ $item[0]->input_type }} class="form-control" id={{ $item[0]->name }}
                                     name="{{ $item[0]->name }}" required>
                             @endif
@@ -78,8 +79,8 @@ $mandatorySplits = array_chunk($mandatory, 2);
                             <div class="row my-2 justify-content-center">
                                 <div class="col-sm-8">
                                     <label for={{ $opt->name }} class="form-label my-0">Masukkan Jumlah :</label>
-                                    <input type="number" class="form-control my-0" id={{ $opt->name }}
-                                        name="{{ $opt->name }}" required>
+                                    <input type="number" min="0" class="form-control my-0"
+                                        id={{ $opt->name }} name="{{ $opt->name }}" required>
                                 </div>
                             </div>
                         @endif
@@ -90,7 +91,8 @@ $mandatorySplits = array_chunk($mandatory, 2);
                                 <div class="col-sm-8">
                                     {{-- label == Gambar --}}
                                     <label for="Gambar" class="form-label my-0">Pilih gambar</label>
-                                    <input type="file" class="form-control my-0" id="Gambar" name="Gambar" required>
+                                    <input type="file" class="form-control my-0" id="Gambar" name="Gambar"
+                                        required>
                                     <div class="form-text">Ukuran antara 330x330 dan 5000x5000 px, max 2 MB</div>
                                 </div>
                             </div>

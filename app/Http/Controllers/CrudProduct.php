@@ -19,7 +19,8 @@ class CrudProduct extends Controller
     ]);
 
     if ($validator->fails()) {
-      return redirect(route('lazadahome'))->with('error', "Category kosong");
+      // return redirect(route('lazadahome'))->with('error', "Category kosong");
+      return back()->with("error", "Kategori kosong");
     }
     $c = new LazopClient($this->url, env('LAZADA_KEY'), env('LAZADA_SECRET'));
     $request = new LazopRequest('/category/attributes/get', 'GET');
@@ -37,6 +38,13 @@ class CrudProduct extends Controller
 
   public function CreateProduct(Request $r)
   {
+    $validator = Validator::make($r->all(), [
+      'Gambar' => 'required|mimes:jpeg,png,jpg|max:2048|dimensions:min_width=330,min_height=330,max_width=5000,max_height=5000'
+    ]);
+    if ($validator->fails()) {
+      return redirect(route('lazadahome'))->with('error', $validator->errors()->first());
+      // return back()->with("error", $validator->errors()->first());
+    }
     $file = $r->file("Gambar");
     $uploadFolder = 'img';
     $image_uploaded_path = $file->store($uploadFolder);
