@@ -92,7 +92,7 @@ $mandatorySplits = array_chunk($mandatory, 2);
                                     {{-- label == Gambar --}}
                                     <label for="Gambar" class="form-label my-0">Pilih gambar</label>
                                     <input type="file" class="form-control my-0" id="Gambar" name="Gambar"
-                                        required>
+                                        accept=".png, .jpg, .jpeg" required>
                                     <div class="form-text">Ukuran antara 330x330 dan 5000x5000 px, max 2 MB</div>
                                 </div>
                             </div>
