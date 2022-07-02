@@ -23,10 +23,10 @@
             </a>
 
             <ul class="mb-2 nav col-12 col-md-auto justify-content-center mb-md-0">
-                <li><a href="/" class="px-2 nav-link link-secondary">Home</a></li>
-                <li><a href="#features" class="px-2 nav-link link-dark">Features</a></li>
-                <li><a href="#faq" class="px-2 nav-link link-dark">FAQs</a></li>
-                <li><a href="#about" class="px-2 nav-link link-dark">About</a></li>
+                <li><a href="#" class="px-2 nav-link link-secondary h5 p-0 m-0">Home</a></li>
+                <li><a href="#features" class="px-2 nav-link link-dark h5 p-0 m-0">Features</a></li>
+                <li><a href="#faq" class="px-2 nav-link link-dark h5 p-0 m-0">FAQs</a></li>
+                <li><a href="#about" class="px-2 nav-link link-dark h5 p-0 m-0">About</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
