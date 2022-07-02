@@ -8,8 +8,8 @@
     <title>DMs | Landing Page</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/footer.css') }}" rel="stylesheet">
 </head>
 
 <body style="background-color:#FFFFFF;">
@@ -18,7 +18,8 @@
         <header
             class="flex-wrap py-3 mb-2 d-flex align-items-center justify-content-center justify-content-md-between border-bottom sticky-top bg-white">
             <a href="/" class="mb-2 d-flex align-items-center col-md-3 mb-md-0 text-dark text-decoration-none">
-                <img src="{{ asset('img/logodms.png') }}" style="height: 40px;  width: 75px;" alt="logo">
+                <img src="{{ asset('img/logodms.png') }}" style="height: 40px;  width: 75px;" alt="logo"
+                    loading="lazy">
             </a>
 
             <ul class="mb-2 nav col-12 col-md-auto justify-content-center mb-md-0">
@@ -67,7 +68,7 @@
             <div class="row align-items-center text-center">
                 <div class="col-md-4 themed-grid-col">
                     <img class="mx-auto" src="{{ asset('img/efisien.png') }}" style="height: 90px;  width: 90px;"
-                        alt="Efisien">
+                        alt="Efisien" loading="lazy">
                     <h6 class="title mt-3 ">Bisnis Lebih Efisien</h6>
                     <p class="">
                         Kelola bisnis dari semua
@@ -77,7 +78,7 @@
                 </div>
                 <div class="col-md-4 themed-grid-col">
                     <img class="mx-auto" src="{{ asset('img/pelanggan.png') }}" style="height: 90px;  width: 90px;"
-                        alt="Kepuasan pelanggan">
+                        alt="Kepuasan pelanggan" loading="lazy">
                     <h6 class="title mt-3 ">Kepuasan Pelanggan</h6>
                     <p class="">
                         Pelanggan inti dari segala jenis bisnis.
@@ -86,7 +87,7 @@
                 </div>
                 <div class="col-md-4 themed-grid-col">
                     <img class="mx-auto" src="{{ asset('img/risetdata.png') }}" style="height: 90px;  width: 90px;"
-                        alt="Berbasis data">
+                        alt="Berbasis data" loading="lazy">
                     <h6 class="title mt-3 ">Berbasis Data</h6>
                     <p class="">
                         Pantau seluruh data penjualan dan pelanggan.
@@ -247,13 +248,16 @@
                 <hr class="w-50 mx-auto">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-2">
-                        <img src="{{ asset('img/logokm.png') }}" class="img-fluid" alt="kampus merdeka">
+                        <img src="{{ asset('img/logokm.png') }}" class="img-fluid" alt="kampus merdeka"
+                            loading="lazy">
                     </div>
                     <div class="col-2">
-                        <img src="{{ asset('img/logose.png') }}" class="img-fluid" alt="kampus merdeka">
+                        <img src="{{ asset('img/logose.png') }}" class="img-fluid" alt="kampus merdeka"
+                            loading="lazy">
                     </div>
                     <div class="col-2">
-                        <img src="{{ asset('img/logolazada.png') }}" class="img-fluid" alt="kampus merdeka">
+                        <img src="{{ asset('img/logolazada.png') }}" class="img-fluid" alt="kampus merdeka"
+                            loading="lazy">
                     </div>
                 </div>
                 <hr class="w-50 mx-auto">
@@ -378,7 +382,7 @@
 
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="{{ asset('/js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/ff1fe4e774.js" crossorigin="anonymous"></script>
 </body>
 
