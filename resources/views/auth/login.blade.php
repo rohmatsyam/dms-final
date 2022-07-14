@@ -34,30 +34,34 @@
                 <div class="mb-3">
                     <div class="form-check">
                         <x-checkbox id="remember_me" name="remember" />
-
                         <label class="form-check-label" for="remember_me">
                             {{ __('Remember Me') }}
                         </label>
                     </div>
                 </div>
 
-                <div class="mb-0">
-                    <div class="d-flex justify-content-end align-items-baseline">
+                <!-- Capthca -->
+                <div class="mb-3">
+                    {!! NoCaptcha::renderJs() !!}
+                    {!! NoCaptcha::display() !!}
+                </div>
+
+                <div class="mb-0 d-flex justify-content-around align-items-center">
+                    <div>
+                        <a href="{{ route('admin.login') }}">only admin</a>
+                    </div>
+                    <div>
                         @if (Route::has('password.request'))
                             <a class="text-muted me-3" href="{{ route('password.request') }}">
                                 {{ __('Forgot your password?') }}
                             </a>
                         @endif
-
                         <x-button>
                             {{ __('Log in') }}
                         </x-button>
                     </div>
                 </div>
             </form>
-            <div>
-                <a href="{{ route('admin.login') }}">only admin</a>
-            </div>
         </div>
     </x-auth-card>
 </x-guest-layout>

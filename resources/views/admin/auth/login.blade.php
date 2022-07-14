@@ -34,11 +34,16 @@
                 <div class="mb-3">
                     <div class="form-check">
                         <x-checkbox id="remember_me" name="remember" />
-
                         <label class="form-check-label" for="remember_me">
                             {{ __('Remember Me') }}
                         </label>
                     </div>
+                </div>
+
+                <!-- Capthca -->
+                <div class="mb-3">
+                    {!! NoCaptcha::renderJs() !!}
+                    {!! NoCaptcha::display() !!}
                 </div>
 
                 <div class="mb-0">

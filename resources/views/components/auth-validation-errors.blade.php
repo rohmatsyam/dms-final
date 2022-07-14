@@ -13,13 +13,13 @@
 
     <div {{ $attributes }}>
         <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">Whoops! Something went wrong.</h4>
-            <hr>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+            <h5 class="alert-heading p-0">Terjadi kesalahan</h4>
+                <hr class="mx-1">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
         </div>
     </div>
 @endif
