@@ -242,18 +242,11 @@
                 </div>
             </div>
 
-            <div class="container mt-2 text-center">
+            <div class="container mt-4 text-center mb-4">
                 <h4 style="font-weight: bolder;">Video Penggunaan</h4>
-                {{-- <div class="ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/EnPsKBsVHqk" title="YouTube video"
-                        allowfullscreen></iframe>
-                </div> --}}
-                {{-- <iframe src="https://www.youtube.com/embed/EnPsKBsVHqk" width="560" height="315"
-                    title="DMs - Wesite Multisite" frameborder="0" allowfullscreen></iframe> --}}
                 <div class="col-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2">
-                    <div class="ratio ratio-16x9 text-center mt-4 mb-4 ">
-                        <iframe class="embed-responsive-item"
-                            src="https://www.youtube.com/embed/EnPsKBsVHqk?controls=0"
+                    <div class="ratio ratio-16x9 text-center">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EnPsKBsVHqk"
                             style="max-width: 100%;height: 100%;" allowfullscreen></iframe>
                     </div>
                 </div>
