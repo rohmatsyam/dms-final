@@ -242,20 +242,37 @@
                 </div>
             </div>
 
+            <div class="container mt-2 text-center">
+                <h4 style="font-weight: bolder;">Video Penggunaan</h4>
+                {{-- <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/EnPsKBsVHqk" title="YouTube video"
+                        allowfullscreen></iframe>
+                </div> --}}
+                {{-- <iframe src="https://www.youtube.com/embed/EnPsKBsVHqk" width="560" height="315"
+                    title="DMs - Wesite Multisite" frameborder="0" allowfullscreen></iframe> --}}
+                <div class="col-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2">
+                    <div class="ratio ratio-16x9 text-center mt-4 mb-4 ">
+                        <iframe class="embed-responsive-item"
+                            src="https://www.youtube.com/embed/EnPsKBsVHqk?controls=0"
+                            style="max-width: 100%;height: 100%;" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
             {{-- Thanks to --}}
             <div class="container mt-4">
                 <h2 style="text-align: center; font-weight: bolder;">Special Thanks</h2>
                 <hr class="w-50 mx-auto">
                 <div class="row justify-content-center align-items-center">
-                    <div class="col-2">
+                    <div class="col-4 col-md-3 col-lg-2">
                         <img src="{{ asset('img/logokm.png') }}" class="img-fluid" alt="kampus merdeka"
                             loading="lazy">
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-md-3 col-lg-2">
                         <img src="{{ asset('img/logose.png') }}" class="img-fluid" alt="kampus merdeka"
                             loading="lazy">
                     </div>
-                    <div class="col-2">
+                    <div class="col-4 col-md-3 col-lg-2">
                         <img src="{{ asset('img/logolazada.png') }}" class="img-fluid" alt="kampus merdeka"
                             loading="lazy">
                     </div>
@@ -325,17 +342,15 @@
     <footer class="site-footer" id="about">
         <div class="container-md">
             <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <h6>Digital Multisite </h6>
+                <div class="col-12 col-lg-6">
+                    <h6>Digital Multisite</h6>
                     <p class="text-justify">Digital Multisite adalah layanan dengan menggunakan berbagai channel
-                        yang
-                        dijadikan strategi perusahaan untuk meningkatkan kepuasan pelanggan, penjualan perusahaan,
-                        dan
-                        kebutuhan perusahaan lainnya. Digital Multisite adalah metode integratif antara hubungan
+                        yang dijadikan strategi perusahaan untuk meningkatkan kepuasan pelanggan, penjualan perusahaan,
+                        dan kebutuhan perusahaan lainnya. Digital Multisite adalah metode integratif antara hubungan
                         pelanggan dengan perusahaan.</p>
                 </div>
 
-                <div class="col-xs-6 col-md-3">
+                <div class="col-6 col-lg-3">
                     <h6>Features</h6>
                     <ul class="footer-links">
                         <li><a style="text-decoration: none;">Katalog</a></li>
@@ -346,7 +361,7 @@
                     </ul>
                 </div>
 
-                <div class="col-xs-6 col-md-3">
+                <div class="col-6 col-lg-3">
                     <h6>Contact Us</h6>
                     <ul class="footer-links">
                         <li><i class="fa-solid fa-phone">&nbsp;&nbsp;</i>+6281-123-321-xxx</li>
