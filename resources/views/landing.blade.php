@@ -46,17 +46,17 @@
         {{-- End of Header --}}
 
         {{-- Hero section --}}
-        <div class="row flex-lg-row-reverse align-items-center g-5">
-            <div class="col-10 col-sm-8 col-lg-6">
+        <div class="row flex-md-row-reverse align-items-center g-5">
+            <div class="col-md-6 d-none d-md-block">
                 <img src="{{ asset('img/laptop.png') }}" class="d-block mx-lg-auto img-fluid" alt="Loading"
                     loading="lazy" width="380" height="380">
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-6">
                 <h1 class="mb-3 display-5 fw-bold lh-1 text-capitalize">Platform omni-channel terpercaya</h1>
                 <p class="lead">Otomasi proses bisnis dari terima pesanan, sinkronisasi stok, integrasi
                     marketplace,
                     aplikasi kasir, jasa pengiriman, hingga pencatatan akuntansi.</p>
-                <div class="gap-2 d-grid d-md-flex justify-content-md-start">
+                <div class="gap-2 d-grid d-md-flex justify-content-md-start d-none d-md-block">
                     <a type="button" class="px-4 btn btn-primary btn-lg me-md-2" href="/api/register">Register</a>
                 </div>
             </div>
@@ -66,30 +66,30 @@
         {{-- ICON --}}
         <div class="container">
             <div class="row align-items-center text-center">
-                <div class="col-md-4 themed-grid-col">
+                <div class="col-4">
                     <img class="mx-auto" src="{{ asset('img/efisien.png') }}" style="height: 90px;  width: 90px;"
                         alt="Efisien" loading="lazy">
                     <h6 class="title mt-3 ">Bisnis Lebih Efisien</h6>
-                    <p class="">
+                    <p class="d-none d-md-block">
                         Kelola bisnis dari semua
                         marketplace dan channel
                         lain dalam satu dashboard.
                     </p>
                 </div>
-                <div class="col-md-4 themed-grid-col">
+                <div class="col-4">
                     <img class="mx-auto" src="{{ asset('img/pelanggan.png') }}" style="height: 90px;  width: 90px;"
                         alt="Kepuasan pelanggan" loading="lazy">
                     <h6 class="title mt-3 ">Kepuasan Pelanggan</h6>
-                    <p class="">
+                    <p class="d-none d-md-block">
                         Pelanggan inti dari segala jenis bisnis.
                         Tingkatkan loyalitas pelanggan dengan DMS.
                     </p>
                 </div>
-                <div class="col-md-4 themed-grid-col">
+                <div class="col-4">
                     <img class="mx-auto" src="{{ asset('img/risetdata.png') }}" style="height: 90px;  width: 90px;"
                         alt="Berbasis data" loading="lazy">
                     <h6 class="title mt-3 ">Berbasis Data</h6>
-                    <p class="">
+                    <p class="d-none d-md-block">
                         Pantau seluruh data penjualan dan pelanggan.
                         Buat keputusan terbaik setiap saat.
                     </p>
